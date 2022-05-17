@@ -1,0 +1,3529 @@
+{
+	"info": {
+		"_postman_id": "41975101-24c5-4e9e-b830-f56b0df1b008",
+		"name": "BCC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "requestCode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();\r",
+									"\r",
+									"pm.environment.set(\"sessid\", response.sessid);\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Success is true\", function () {\r",
+									"    pm.expect(response.success).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response contains sessid property\", function () {\r",
+									"    pm.expect(response).to.contain.property(\"sessid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "bgate-stage.star-bridge.lv"
+							},
+							{
+								"key": "deviceid",
+								"value": "BCC_MOBILE_ANDROID"
+							},
+							{
+								"key": "appver",
+								"value": "1.0.30"
+							},
+							{
+								"key": "fcm-token",
+								"value": "fcm_token"
+							},
+							{
+								"key": "authorization",
+								"value": "{{phone}}"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+							},
+							{
+								"key": "dev-id",
+								"value": "dev_id"
+							},
+							{
+								"key": "productid",
+								"value": "{{id}}"
+							},
+							{
+								"key": "applicationid",
+								"value": "{{id}}"
+							},
+							{
+								"key": "origin",
+								"value": "http://localhost"
+							},
+							{
+								"key": "x-requested-with",
+								"value": "com.ronte.blackcatcard.stage"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "cross-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "http://localhost/"
+							},
+							{
+								"key": "accept-language",
+								"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "https://bgate-stage.star-bridge.lv/api/v1/requestCode"
+						},
+						"url": {
+							"raw": "{{URL}}/requestCode",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"requestCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response1 = pm.response.json();\r",
+									"pm.environment.set(\"tok\", response1.token);\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has keys service_code and success\", function () {\r",
+									"    pm.expect(response1).to.include(\r",
+									"        {\"service_code\": \"OTFIN\", \"success\": \"true\"}\r",
+									"    );\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response contains token key\", function () {\r",
+									"    pm.expect(response1).to.contain.keys(\"token\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Host",
+								"value": "bgate-stage.star-bridge.lv"
+							},
+							{
+								"key": "deviceid",
+								"value": "BCC_MOBILE_ANDROID"
+							},
+							{
+								"key": "appver",
+								"value": "1.0.30"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "{{contentType}}"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "authorization",
+								"value": "{{phone}}"
+							},
+							{
+								"key": "productid",
+								"value": "{{id}}"
+							},
+							{
+								"key": "applicationid",
+								"value": "{{id}}"
+							},
+							{
+								"key": "origin",
+								"value": "http://localhost"
+							},
+							{
+								"key": "x-requested-with",
+								"value": "com.ronte.blackcatcard.stage"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "cross-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "http://localhost/"
+							},
+							{
+								"key": "accept-language",
+								"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"sessid\":\"{{sessid}}\",\"code\":\"000000\"}"
+						},
+						"url": {
+							"raw": "{{URL}}/signin",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transfer_to_contact",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "step_1_initialization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response2 = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"confirmationToken\", response2.errors[0].properties.confirmationToken);\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(response2.errors[0]).to.include(\r",
+											"        {\"code\": 449,\r",
+											"         \"message\": \"Confirm with a confirmation code\"}\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response contains 'confirmationToken' key\", function () {\r",
+											"    pm.expect(response2.errors[0].properties).to.contain.keys(\"confirmationToken\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"phoneNumber\":\"79000000008\",\"sendLinkToRecipient\":false,\"purpose\":\"Other \"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "step_2_confirmation",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseSt2 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body has status ok\", function () {\r",
+											"    pm.expect(responseSt2).to.have.property(\"status\", \"ok\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'referenceNumber' property\", function () {\r",
+											"    pm.expect(responseSt2).to.have.property(\"referenceNumber\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{phone}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "{{contentType}}",
+										"type": "text"
+									},
+									{
+										"key": "x-confirmation-code",
+										"value": "{{confirmationCode}}",
+										"type": "text"
+									},
+									{
+										"key": "x-confirmation-token",
+										"value": "{{confirmationToken}}",
+										"type": "text"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"phoneNumber\":\"79000000008\",\"sendLinkToRecipient\":false,\"purpose\":\"Other \"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "commission",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseCom = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body has 'commission' property\", function () {\r",
+											"    pm.expect(responseCom).to.contain.property(\"commission\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'currency' property\", function () {\r",
+											"    pm.expect(responseCom).to.contain.property(\"currency\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'total' property\", function () {\r",
+											"    pm.expect(responseCom).to.contain.property(\"total\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"phoneNumber\":\"79000000008\",\"sendLinkToRecipient\":false,\"purpose\":\"Other \"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact/commission",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact",
+										"commission"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "negative_incorrect_account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseError1 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response contains error\", function () {\r",
+											"    pm.expect(responseError1).to.include.keys(\"errors\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response contains message value 'Current user does not...' \", function () {\r",
+											"    pm.expect(responseError1.errors[0].message).to.include(\"Current user does not have account with id\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response contains code value 404\", function () {\r",
+											"    pm.expect(responseError1.errors[0]).to.contain({\"code\": 404});\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY9999\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"phoneNumber\":\"79000000008\",\"sendLinkToRecipient\":false,\"purpose\":\"Other \"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "negative_value=0",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseError2 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError2.errors[0]).to.include(\r",
+											"        {\"code\": 2000,\r",
+											"         \"message\": \"Unexpected error from bank gate API\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi'\", function () {\r",
+											"    pm.expect(responseError2.errors[0].properties).to.include(\r",
+											"        {\"ErrorApi\": \"paymentContact.amount.sum.value must be greater than 0.0; \"}\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.00\"}},\"phoneNumber\":\"79000000008\",\"sendLinkToRecipient\":false,\"purpose\":\"Other \"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "incorrect_confirmation_token",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseError3 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError3.errors[0]).to.include(\r",
+											"        {\"code\": 404,\r",
+											"         \"message\": \"Not found exception\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has 'confirmationToken' key\", function () {\r",
+											"    pm.expect(responseError3.errors[0].properties).to.include.key(\r",
+											"        \"confirmationToken\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{phone}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "{{contentType}}",
+										"type": "text"
+									},
+									{
+										"key": "x-confirmation-code",
+										"value": "{{confirmationCode}}",
+										"type": "text"
+									},
+									{
+										"key": "x-confirmation-token",
+										"value": "{{$randomInt}}",
+										"type": "text"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"phoneNumber\":\"79000000008\",\"sendLinkToRecipient\":false,\"purpose\":\"Other \"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transfer_to_card",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "step_1_initialization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var resp = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"confirToken\", resp.errors[0].properties.confirmationToken);\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(resp.errors[0]).to.include(\r",
+											"        {\"code\": 449,\r",
+											"         \"message\": \"Confirm with a confirmation code\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response contains 'confirmationToken' key\", function () {\r",
+											"    pm.expect(resp.errors[0].properties).to.contain.key(\"confirmationToken\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"cardNumber\":\"5277601000013631\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Top up card Card comment 231507022553043413043654045013\",\"cardOwner\":\"TEST SIX\",\"fromCardId\":\"PPYCRM10385\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "step_2_confirmation",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var respStep2 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body has status : ok\", function () {\r",
+											"    pm.expect(respStep2.status).to.equal(\"ok\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'referenceNumber' key\", function () {\r",
+											"    pm.expect(respStep2).to.have.any.keys(\"referenceNumber\").not.to.be.empty;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{phone}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "{{contentType}}",
+										"type": "text"
+									},
+									{
+										"key": "x-confirmation-code",
+										"value": "{{confirmationCode}}",
+										"type": "text"
+									},
+									{
+										"key": "x-confirmation-token",
+										"value": "{{confirToken}}",
+										"type": "text"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"cardNumber\":\"5277601000013631\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Top up card Card comment 231507022553043413043654045013\",\"cardOwner\":\"TEST SIX\",\"fromCardId\":\"PPYCRM10385\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "commission",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var respCommiss = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body has 'commission' property\", function () {\r",
+											"    pm.expect(respCommiss).to.contain.property(\"commission\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'currency' property\", function () {\r",
+											"    pm.expect(respCommiss).to.contain.property(\"currency\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'total' property\", function () {\r",
+											"    pm.expect(respCommiss).to.contain.property(\"total\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"cardNumber\":\"5277601000013631\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Top up card Card comment 231507022553043413043654045013\",\"cardOwner\":\"TEST SIX\",\"fromCardId\":\"PPYCRM10385\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact/commission",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact",
+										"commission"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "purpose_is_empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseError3 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError3.errors[0]).to.include(\r",
+											"        {\"code\": 2000,\r",
+											"         \"message\": \"Unexpected error from bank gate API\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi'\", function () {\r",
+											"    pm.expect(responseError3.errors[0].properties).to.contain(\r",
+											"        {\"ErrorApi\": \"paymentContact.purpose may not be empty; \"}\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"cardNumber\":\"5277601000013631\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"\",\"cardOwner\":\"TEST SIX\",\"fromCardId\":\"PPYCRM10385\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "not_Papaya_card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseError4 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError4.errors[0]).to.include(\r",
+											"        {\"code\": 501,\r",
+											"         \"message\": \"The payment can be submitted only to Papaya card (starting with 527760)\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'message'\", function () {\r",
+											"    pm.expect(responseError4.errors[0].properties).to.include(\r",
+											"        {\"message\": \"The payment can be submitted only to Papaya card (starting with 527760)\"}\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10312\",\"cardNumber\":\"9277601000013631\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Top up card Card comment 231507022553043413043654045013\",\"cardOwner\":\"TEST SIX\",\"fromCardId\":\"PPYCRM10385\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transfer_from_not_own_account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseError5 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response contains error\", function () {\r",
+											"    pm.expect(responseError5).to.include.keys(\"errors\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response contains code value 404\", function () {\r",
+											"    pm.expect(responseError5.errors[0]).to.contain({\"code\": 404});\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response contains message value 'Current user does not...' \", function () {\r",
+											"    pm.expect(responseError5.errors[0].message).to.include(\"Current user does not have account with id\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_contact\":{\"account\":\"PPY10555\",\"cardNumber\":\"5277601000013631\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Top up card Card comment 231507022553043413043654045013\",\"cardOwner\":\"TEST SIX\",\"fromCardId\":\"PPYCRM10385\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_contact",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_contact"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Payment_SEPA",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "step_1_initialization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var resp1 = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"confirToken1\", resp1.errors[0].properties.confirmationToken);\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(resp1.errors[0]).to.include(\r",
+											"        {\"code\": 449,\r",
+											"         \"message\": \"Confirm with a confirmation code\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response contains 'confirmationToken' key\", function () {\r",
+											"    pm.expect(resp1.errors[0].properties).to.have.any.keys(\"confirmationToken\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"xhdhdd\",\"iban\":\"LV86HABA0551001858250\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.03\"}},\"purpose\":\"Top up my card\",\"transferDetails\":\"\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "step_2_confirmation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var respoStep2 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body has status : ok\", function () {\r",
+											"    pm.expect(respoStep2.status).to.equal(\"ok\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'referenceNumber' key\", function () {\r",
+											"    pm.expect(respoStep2).to.include.keys(\"referenceNumber\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "{{contentType}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{phone}}",
+										"type": "text"
+									},
+									{
+										"key": "applicationId",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "productId",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}",
+										"type": "text"
+									},
+									{
+										"key": "x-Confirmation-Code",
+										"value": "{{confirmationCode}}",
+										"type": "text"
+									},
+									{
+										"key": "x-Confirmation-Token",
+										"value": "{{confirToken1}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"xhdhdd\",\"iban\":\"LV86HABA0551001858250\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.03\"}},\"purpose\":\"Top up my card\",\"transferDetails\":\"\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "commission",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseComm = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body has 'commission' property = 0.20\", function () {\r",
+											"    pm.expect(responseComm.commission).to.equal(0.20);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'currency' property\", function () {\r",
+											"    pm.expect(responseComm).to.contain.property(\"currency\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'total' key\", function () {\r",
+											"    pm.expect(responseComm).to.have.any.keys(\"total\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"xhdhdd\",\"iban\":\"LV86HABA0551001858250\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.03\"}},\"purpose\":\"Top up my card\",\"transferDetails\":\"\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa/commission",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa",
+										"commission"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "currency_code_is_empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseError6 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError6.errors[0]).to.include(\r",
+											"        {\"code\": 2000,\r",
+											"         \"message\": \"Unexpected error from bank gate API\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi'\", function () {\r",
+											"    pm.expect(responseError6.errors[0].properties).to.contain.property(\"ErrorApi\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi' with value '..currency.code may not be empty..'\", function () {\r",
+											"    pm.expect(responseError6.errors[0].properties.ErrorApi).to.include(\"currency.code may not be empty\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"xhdhdd\",\"iban\":\"LV86HABA0551001858250\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"\"},\"value\":\"0.03\"}},\"purpose\":\"Top up my card\",\"transferDetails\":\"\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "value_is_null",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseError7 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError7.errors[0]).to.include(\r",
+											"        {\"code\": 2000,\r",
+											"         \"message\": \"Unexpected error from bank gate API\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi'\", function () {\r",
+											"    pm.expect(responseError7.errors[0].properties).to.contain.property(\"ErrorApi\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi' with value '..value may not be null..'\", function () {\r",
+											"    pm.expect(responseError7.errors[0].properties.ErrorApi).to.include(\"value may not be null\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"xhdhdd\",\"iban\":\"LV86HABA0551001858250\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"\"}},\"purpose\":\"Top up my card\",\"transferDetails\":\"\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "account_is_empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseError8 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError8.errors[0]).to.include(\r",
+											"        {\"code\": 2000,\r",
+											"         \"message\": \"Unexpected error from bank gate API\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi'\", function () {\r",
+											"    pm.expect(responseError8.errors[0].properties).to.contain.property(\"ErrorApi\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi' with value '..account may not be empty..'\", function () {\r",
+											"    pm.expect(responseError8.errors[0].properties.ErrorApi).to.include(\"account may not be empty\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"beneficiaryName\":\"xhdhdd\",\"iban\":\"LV86HABA0551001858250\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.03\"}},\"purpose\":\"Top up my card\",\"transferDetails\":\"\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Payment_Internal",
+			"item": [
+				{
+					"name": "Positive + 1 Negative",
+					"item": [
+						{
+							"name": "step_1_initialization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseInternal = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"confirToken2\", responseInternal.errors[0].properties.confirmationToken);\r",
+											"\r",
+											"pm.test(\"Check the code value\", function () {\r",
+											"    pm.expect(responseInternal.errors[0].code).to.eql(449);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseInternal.errors[0]).to.include(\r",
+											"        {\r",
+											"         \"message\": \"Confirm with a confirmation code\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response contains 'confirmationToken' key\", function () {\r",
+											"    pm.expect(responseInternal.errors[0].properties).to.have.any.keys(\"confirmationToken\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"Test Zero Eight\",\"iban\":\"MT60PAPY36836000002676370004427\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Other\",\"transferDetails\":\"haha\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "incorrect_confirmation_code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseError9 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError9.errors[0]).to.include(\r",
+											"        {\"code\": 2000,\r",
+											"         \"message\": \"Unexpected error from bank gate API\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi'\", function () {\r",
+											"    pm.expect(responseError9.errors[0].properties).to.contain.property(\"ErrorApi\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi' with value '..PapayaOperation not correct confirmation code'\", function () {\r",
+											"    pm.expect(responseError9.errors[0].properties.ErrorApi).to.include(\"PapayaOperation not correct confirmation code\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "{{contentType}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{phone}}",
+										"type": "text"
+									},
+									{
+										"key": "applicationId",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "productId",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}",
+										"type": "text"
+									},
+									{
+										"key": "x-Confirmation-Code",
+										"value": "{{$randomInt}}",
+										"type": "text"
+									},
+									{
+										"key": "x-Confirmation-Token",
+										"value": "{{confirToken2}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"Test Zero Eight\",\"iban\":\"MT60PAPY36836000002676370004427\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Other\",\"transferDetails\":\"haha\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "step_2_confirmation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responStep3 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body has status : ok\", function () {\r",
+											"    pm.expect(responStep3.status).to.equal(\"ok\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'referenceNumber' key\", function () {\r",
+											"    pm.expect(responStep3).to.include.keys(\"referenceNumber\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "{{contentType}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{phone}}",
+										"type": "text"
+									},
+									{
+										"key": "applicationId",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "productId",
+										"value": "{{id}}",
+										"type": "text"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}",
+										"type": "text"
+									},
+									{
+										"key": "x-Confirmation-Code",
+										"value": "{{confirmationCode}}",
+										"type": "text"
+									},
+									{
+										"key": "x-Confirmation-Token",
+										"value": "{{confirToken2}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"Test Zero Eight\",\"iban\":\"MT60PAPY36836000002676370004427\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Other\",\"transferDetails\":\"haha\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "commission",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseCommiss = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body has 'commission' property = 0\", function () {\r",
+											"    pm.expect(responseCommiss.commission).to.equal(0);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'currency' property\", function () {\r",
+											"    pm.expect(responseCommiss).to.contain.property(\"currency\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response body has 'total' property\", function () {\r",
+											"    pm.expect(responseCommiss).to.contain.property(\"total\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"Test Zero Eight\",\"iban\":\"MT60PAPY36836000002676370004427\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Other\",\"transferDetails\":\"haha\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa/commission",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa",
+										"commission"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "iban_is_empty",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseError10 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError10.errors[0]).to.include(\r",
+											"        {\"code\": 2000,\r",
+											"         \"message\": \"Unexpected error from bank gate API\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi'\", function () {\r",
+											"    pm.expect(responseError10.errors[0].properties).to.contain.property(\"ErrorApi\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi' with value 'paymentSEPA.iban may not be empty;'\", function () {\r",
+											"    pm.expect(responseError10.errors[0].properties.ErrorApi).to.include(\"paymentSEPA.iban may not be empty;\");\r",
+											"    });"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"beneficiaryName\":\"Test Zero Eight\",\"iban\":\"\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Other\",\"transferDetails\":\"haha\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "beneficiaryName_is_deleted",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseError11 = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response has keys code, message, type\", function () {\r",
+											"    pm.expect(responseError11.errors[0]).to.include(\r",
+											"        {\"code\": 2000,\r",
+											"         \"message\": \"Unexpected error from bank gate API\",\r",
+											"         \"type\": \"\"\r",
+											"        }\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi'\", function () {\r",
+											"    pm.expect(responseError11.errors[0].properties).to.contain.property(\"ErrorApi\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response has property 'ErrorApi' with value 'paymentSEPA.beneficiaryName may not be empty;'\", function () {\r",
+											"    pm.expect(responseError11.errors[0].properties.ErrorApi).to.eql(\"paymentSEPA.beneficiaryName may not be empty; \");\r",
+											"    });\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Host",
+										"value": "bgate-stage.star-bridge.lv"
+									},
+									{
+										"key": "deviceid",
+										"value": "BCC_MOBILE_ANDROID"
+									},
+									{
+										"key": "appver",
+										"value": "1.0.30"
+									},
+									{
+										"key": "productid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "authorization",
+										"value": "{{phone}}"
+									},
+									{
+										"key": "content-type",
+										"value": "{{contentType}}"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Linux; Android 12; M2101K7AI Build/SKQ1.210908.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36"
+									},
+									{
+										"key": "token",
+										"value": "{{tok}}"
+									},
+									{
+										"key": "x-confirmation-type",
+										"value": "SIGN"
+									},
+									{
+										"key": "applicationid",
+										"value": "{{id}}"
+									},
+									{
+										"key": "origin",
+										"value": "http://localhost"
+									},
+									{
+										"key": "x-requested-with",
+										"value": "com.ronte.blackcatcard.stage"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "cross-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "http://localhost/"
+									},
+									{
+										"key": "accept-language",
+										"value": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"payment_sepa\":{\"account\":\"PPY10312\",\"iban\":\"MT60PAPY36836000002676370004427\",\"amount\":{\"sum\":{\"currency\":{\"code\":\"EUR\"},\"value\":\"0.02\"}},\"purpose\":\"Other\",\"transferDetails\":\"haha\"}}"
+								},
+								"url": {
+									"raw": "{{URL}}/payment_sepa",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"payment_sepa"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "History",
+			"item": [
+				{
+					"name": "History of transactions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var responseHistory = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response body has property 'id'\", function () {\r",
+									"    pm.expect(responseHistory[0]).to.contain.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'currency'\", function () {\r",
+									"    pm.expect(responseHistory[0]).to.contain.property(\"currency\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'simpleAccount'\", function () {\r",
+									"    pm.expect(responseHistory[0]).to.contain.property(\"simpleAccount\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'organization'\", function () {\r",
+									"    pm.expect(responseHistory[0]).to.contain.property(\"organization\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'description'\", function () {\r",
+									"    pm.expect(responseHistory[0]).to.contain.property(\"description\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'status'\", function () {\r",
+									"    pm.expect(responseHistory[0]).to.contain.property(\"status\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{phone}}",
+								"type": "text"
+							},
+							{
+								"key": "applicationid",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "productid",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{tok}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/operations?dateFrom=05.05.2022",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"operations"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "05.05.2022"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "positive",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var responseTempl = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response body has property 'amount'\", function () {\r",
+									"    pm.expect(responseTempl).to.contain.property(\"amount\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'currency'\", function () {\r",
+									"    pm.expect(responseTempl).to.contain.property(\"currency\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'type'\", function () {\r",
+									"    pm.expect(responseTempl).to.contain.property(\"type\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'title'\", function () {\r",
+									"    pm.expect(responseTempl).to.contain.property(\"title\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'number'\", function () {\r",
+									"    pm.expect(responseTempl).to.contain.property(\"number\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'transfer_title'\", function () {\r",
+									"    pm.expect(responseTempl).to.contain.property(\"transfer_title\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body has property 'transfer_type'\", function () {\r",
+									"    pm.expect(responseTempl).to.contain.property(\"transfer_type\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{phone}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{contentType}}",
+								"type": "text"
+							},
+							{
+								"key": "applicationId",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "productId",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{tok}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transfer_type\":\"TRANSFER_CONTACT\",\r\n    \"transfer_title\":\"{{template}}\",\r\n    \"title\":\"{{template}}\",\r\n    \"type\":\"CARD\",\r\n    \"values\":[\r\n        {\r\n            \"name\":\"personalInformation.second_field\",\r\n            \"value\":\"79777777777\"\r\n        },\r\n        {\r\n            \"name\":\"templates.first_field\",\r\n            \"value\":\"Other\"\r\n        },\r\n        {\r\n            \"name\":\"templates.second_field\",\r\n            \"value\":\"999\"\r\n        }\r\n    ],\r\n    \"amount\":\"5\",\r\n    \"currency\":\"EUR\",\r\n    \"number\":\"***0311\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/templates",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "negative_incorrect_token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{phone}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{contentType}}",
+								"type": "text"
+							},
+							{
+								"key": "applicationId",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "productId",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{$randomInt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transfer_type\":\"TRANSFER_CONTACT\",\r\n    \"transfer_title\":\"Template_Leo\",\r\n    \"title\":\"Template_Leo\",\r\n    \"type\":\"CARD\",\r\n    \"values\":[\r\n        {\r\n            \"name\":\"personalInformation.second_field\",\r\n            \"value\":\"79777777777\"\r\n        },\r\n        {\r\n            \"name\":\"templates.first_field\",\r\n            \"value\":\"Other\"\r\n        },\r\n        {\r\n            \"name\":\"templates.second_field\",\r\n            \"value\":\"999\"\r\n        }\r\n    ],\r\n    \"amount\":\"5\",\r\n    \"currency\":\"EUR\",\r\n    \"number\":\"***0311\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/templates",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "negative_incorrect_transfer_type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{phone}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{contentType}}",
+								"type": "text"
+							},
+							{
+								"key": "applicationId",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "productId",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{tok}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transfer_type\":\"BANK\",\r\n    \"transfer_title\":\"Template_Leo\",\r\n    \"title\":\"Template_Leo\",\r\n    \"type\":\"CARD\",\r\n    \"values\":[\r\n        {\r\n            \"name\":\"personalInformation.second_field\",\r\n            \"value\":\"79777777777\"\r\n        },\r\n        {\r\n            \"name\":\"templates.first_field\",\r\n            \"value\":\"Other\"\r\n        },\r\n        {\r\n            \"name\":\"templates.second_field\",\r\n            \"value\":\"999\"\r\n        }\r\n    ],\r\n    \"amount\":\"5\",\r\n    \"currency\":\"EUR\",\r\n    \"number\":\"***0311\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/templates",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "negative_no_transfer_title",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response contains error\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{phone}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "{{contentType}}",
+								"type": "text"
+							},
+							{
+								"key": "applicationId",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "productId",
+								"value": "{{id}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "{{tok}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transfer_type\":\"TRANSFER_CONTACT\",\r\n    \"title\":\"Template_Leo\",\r\n    \"type\":\"CARD\",\r\n    \"values\":[\r\n        {\r\n            \"name\":\"personalInformation.second_field\",\r\n            \"value\":\"79777777777\"\r\n        },\r\n        {\r\n            \"name\":\"templates.first_field\",\r\n            \"value\":\"Other\"\r\n        },\r\n        {\r\n            \"name\":\"templates.second_field\",\r\n            \"value\":\"999\"\r\n        }\r\n    ],\r\n    \"amount\":\"5\",\r\n    \"currency\":\"EUR\",\r\n    \"number\":\"***0311\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/templates",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"templates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
